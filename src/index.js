@@ -10,13 +10,6 @@ export default class DivModifier {
   }
 }
 
-// function divToParent(parent, id = '') {
-//   const div = document.createElement('div');
-//   if (id !== '') div.id = id;
-//   parent.appendChild(div);
-//   return div;
-// }
-
 class MainPage extends DivModifier {
   constructor() {
     super();
