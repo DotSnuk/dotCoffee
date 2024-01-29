@@ -57,11 +57,11 @@ class MainPage extends DivModifier {
     });
   }
 }
-const site = new MainPage();
+const SITE = new MainPage();
 const coffeeLink = new MenubarItem('coffee', 'coffee.js');
 const teaLink = new MenubarItem('tea', 'tea.js');
 const dessertLink = new MenubarItem('dessert', 'dessert.js');
-site.addToMenuList(coffeeLink);
-site.addToMenuList(teaLink);
-site.addToMenuList(dessertLink);
-site.populateMenuBar();
+SITE.addToMenuList(coffeeLink);
+SITE.addToMenuList(teaLink);
+SITE.addToMenuList(dessertLink);
+SITE.populateMenuBar();
