@@ -1,15 +1,25 @@
 import './style.css';
 import MenubarItem from './menubarItem';
 
-function divToParent(parent, id = '') {
-  const div = document.createElement('div');
-  if (id !== '') div.id = id;
-  parent.appendChild(div);
-  return div;
+export default class DivModifier {
+  divToParent(parent, id = '') {
+    const div = document.createElement('div');
+    if (id !== '') div.id = id;
+    parent.appendChild(div);
+    return div;
+  }
 }
 
-class MainPage {
+// function divToParent(parent, id = '') {
+//   const div = document.createElement('div');
+//   if (id !== '') div.id = id;
+//   parent.appendChild(div);
+//   return div;
+// }
+
+class MainPage extends DivModifier {
   constructor() {
+    super();
     this.title = 'dotCoffee';
     this.content = 'content';
     this.menuList = [];
@@ -18,7 +28,7 @@ class MainPage {
 
   render() {
     const elements = ['title', 'menubar', 'module', 'footer'];
-    elements.forEach(elmnt => divToParent(this.content, elmnt));
+    elements.forEach(elmnt => super.divToParent(this.content, elmnt));
     this.addTitleText();
   }
 
@@ -30,7 +40,7 @@ class MainPage {
   }
 
   set content(valueId) {
-    const div = divToParent(document.body, valueId);
+    const div = super.divToParent(document.body, valueId);
     this._content = div;
   }
   get content() {
@@ -47,7 +57,7 @@ class MainPage {
   populateMenuBar() {
     const menubar = document.getElementById('menubar');
     this.menuList.forEach(item => {
-      const div = divToParent(menubar);
+      const div = super.divToParent(menubar);
       div.classList.add('menuitem');
       // if item.active == true add active (or something)
       div.innerText = item.name;
