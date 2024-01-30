@@ -1,8 +1,6 @@
 export default class Item {
   constructor(name) {
     this.name = name;
-    this.description = '';
-    this.picture = '';
     this.prices = [];
   }
   set name(value) {
