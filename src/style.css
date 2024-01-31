@@ -33,8 +33,15 @@ body {
   height: 100vh;
   width: 100vw;
 }
+.item {
+  border: 1px solid black;
+  flex-basis: 200px;
+}
 .header {
   font-size: 24px;
+}
+#menubar ul li {
+  display: inline-block;
 }
 #content {
   display: grid;
@@ -44,9 +51,13 @@ body {
   text-align: center;
   align-items: center;
 }
-#menubar {
+#menubar ul {
   display: flex;
   gap: 40px;
   justify-content: center;
   align-items: center;
+}
+#module {
+  display: flex;
+  flex-wrap: wrap;
 }

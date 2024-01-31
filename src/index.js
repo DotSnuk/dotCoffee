@@ -45,8 +45,13 @@ class MainPage extends DivModifier {
   }
   populateMenuBar() {
     const menubar = document.getElementById('menubar');
+    const ul = document.createElement('ul');
+    menubar.appendChild(ul);
     this.menuList.forEach(item => {
-      const div = super.divToParent(menubar);
+      const li = document.createElement('li');
+      ul.appendChild(li);
+      const div = document.createElement('div');
+      li.appendChild(div);
       div.classList.add('menuitem');
       // if item.active == true add active (or something)
       div.innerText = item.name;
@@ -69,7 +74,6 @@ const SITE = new MainPage();
 const coffeeLink = new MenubarItem('coffee', 'coffee.js');
 const teaLink = new MenubarItem('tea', 'tea.js');
 const dessertLink = new MenubarItem('dessert', 'dessert.js');
-console.log(coffee);
 
 SITE.addToMenuList(coffeeLink);
 SITE.addToMenuList(teaLink);
