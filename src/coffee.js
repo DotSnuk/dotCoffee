@@ -1,5 +1,5 @@
 import Item from './item.js';
-import Module from './module.js';
+import Module from './itemcontainer.js';
 
 const drip = new Item('Drip');
 drip.description = 'Drip coffee from Arabica beans';

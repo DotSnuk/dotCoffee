@@ -10,11 +10,11 @@ class MainPage extends DivModifier {
     this.content = 'content';
     this.menuList = [];
     this.render();
-    this.activeModule(coffee);
+    this.activeContainer(coffee);
     // this.loadModule(coffee);
   }
   render() {
-    const elements = ['title', 'menubar', 'module', 'footer'];
+    const elements = ['title', 'menubar', 'container', 'footer'];
     elements.forEach(elmnt => super.divToParent(this.content, elmnt));
     this.addTitleText();
   }
@@ -57,14 +57,13 @@ class MainPage extends DivModifier {
       div.innerText = item.name;
     });
   }
-  activeModule(mod) {
-    mod.populateParent();
-    //?
+  activeContainer(containr) {
+    containr.divToContainer();
   }
   loadModule(mod) {
-    const module = document.getElementById('module');
+    const containerId = document.getElementById('container');
     mod.itemList.forEach(item => {
-      const div = super.divToParent(module);
+      const div = super.divToParent(containerId);
       div.innerText = item.name;
     });
   }

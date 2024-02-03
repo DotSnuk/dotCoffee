@@ -1,6 +1,6 @@
 import DivModifier from './divmodifier.js';
 
-export default class Module extends DivModifier {
+export default class ItemContainer extends DivModifier {
   constructor() {
     super();
     this.itemList = [];
@@ -31,18 +31,20 @@ export default class Module extends DivModifier {
       console.log(string);
     });
   }
-  populateParent() {
-    this.itemList.forEach(item => {
-      const div = super.divToParent(document.getElementById('module'));
-      div.classList.add('item');
-      div.innerText = '> ' + item.name;
-      div.addEventListener('click', () => {
-        this.expandItem(div, item);
-      });
-      // const itemDiv = super.divToParent(this.parent);
-      // itemDiv.classList.add('item');
-      // itemDiv.innerText = item.name;
-      // add eventlistener for clicking item
-    });
+  //
+  divToContainer() {
+    const containerDiv = document.getElementById('container');
+    const elements = ['filter', 'itemContainer'];
+    elements.forEach(elmnt => super.divToParent(containerDiv, elmnt));
+  }
+  populateItems() {
+    // this.itemList.forEach(item => {
+    //   const div = super.divToParent(document.getElementById('module')); id is now container
+    //   div.classList.add('item');
+    //   div.innerText = '> ' + item.name;
+    //   div.addEventListener('click', () => {
+    //     this.expandItem(div, item);
+    //   });
+    // });
   }
 }
