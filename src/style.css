@@ -45,12 +45,13 @@ body {
 }
 #filter,
 #itemContainer {
+  box-sizing: border-box;
   height: 100%;
   border: 1px solid black; /* for layout purpose */
   display: flex;
   flex-wrap: wrap;
-
   flex-direction: row;
+  align-content: flex-start;
   gap: 10px;
   padding: 10px;
 }
