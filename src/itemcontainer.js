@@ -46,4 +46,11 @@ export default class ItemContainer extends DivModifier {
       });
     });
   }
+  renderItem() {
+    // div and item parameter
+    // set background
+    // set name
+    // create list of prices
+    // order button
+  }
 }
