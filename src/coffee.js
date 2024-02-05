@@ -8,6 +8,10 @@ const coldBrew = new Item('Cold Brew');
 coldBrew.description =
   'Strong ice cold coffee, has been steeped over an extended time in cold water.';
 coldBrew.addToPrice({ volume: '3dl', cost: 20 });
+const frenchPress = new Item('French press');
+frenchPress.addToPrice({ volume: '3dl', cost: 20 });
+frenchPress.picture = 'images/frenchp.jpg';
 export const coffee = new Module();
+coffee.addToList(frenchPress);
 coffee.addToList(drip);
 coffee.addToList(coldBrew);

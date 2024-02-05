@@ -35,11 +35,24 @@ body {
 }
 .item {
   border: 1px solid black;
-  flex-basis: 200px;
-  height: 200px;
+  flex-basis: 300px;
+  height: 300px;
+  background-size: 100%;
+  border-radius: 25px;
 }
 .header {
   font-size: 24px;
+}
+#filter,
+#itemContainer {
+  height: 100%;
+  border: 1px solid black; /* for layout purpose */
+  display: flex;
+  flex-wrap: wrap;
+
+  flex-direction: row;
+  gap: 10px;
+  padding: 10px;
 }
 #menubar ul li {
   display: inline-block;
@@ -59,8 +72,11 @@ body {
   align-items: center;
 }
 #container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 50px;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 100%;
+  gap: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  /* overflow-y: auto; */
 }

@@ -31,20 +31,19 @@ export default class ItemContainer extends DivModifier {
       console.log(string);
     });
   }
-  //
   divToContainer() {
     const containerDiv = document.getElementById('container');
     const elements = ['filter', 'itemContainer'];
     elements.forEach(elmnt => super.divToParent(containerDiv, elmnt));
   }
   populateItems() {
-    // this.itemList.forEach(item => {
-    //   const div = super.divToParent(document.getElementById('module')); id is now container
-    //   div.classList.add('item');
-    //   div.innerText = '> ' + item.name;
-    //   div.addEventListener('click', () => {
-    //     this.expandItem(div, item);
-    //   });
-    // });
+    this.itemList.forEach(item => {
+      const div = super.divToParent(document.getElementById('itemContainer'));
+      div.classList.add('item');
+      div.style.backgroundImage = "url('" + item.picture + "')";
+      div.addEventListener('click', () => {
+        this.expandItem(div, item);
+      });
+    });
   }
 }

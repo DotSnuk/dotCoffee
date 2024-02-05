@@ -59,6 +59,7 @@ class MainPage extends DivModifier {
   }
   activeContainer(containr) {
     containr.divToContainer();
+    containr.populateItems();
   }
   loadModule(mod) {
     const containerId = document.getElementById('container');
