@@ -40,17 +40,35 @@ export default class ItemContainer extends DivModifier {
     this.itemList.forEach(item => {
       const div = super.divToParent(document.getElementById('itemContainer'));
       div.classList.add('item');
-      div.style.backgroundImage = "url('" + item.picture + "')";
-      div.addEventListener('click', () => {
-        this.expandItem(div, item);
-      });
+      this.renderItem(div, item);
+      // div.style.backgroundImage = "url('" + item.picture + "')";
+      // div.addEventListener('click', () => {
+      //   this.expandItem(div, item);
+      // });
     });
   }
-  renderItem() {
+  renderItem(div, item) {
+    div.style.backgroundImage = "url('" + item.picture + "')";
+    const elements = ['name', 'middle', 'bottom'];
+    elements.forEach(elemnt => {
+      const newDiv = document.createElement('div');
+      this.itemDivParser(elemnt);
+      // switch statement?
+      div.appendChild(newDiv);
+    });
     // div and item parameter
     // set background
     // set name
     // create list of prices
     // order button
   }
+  itemDivParser(divName) {
+    const divParser = {
+      name: () => item.name,
+      bottom: () => this.addPriceList(),
+    };
+    divParser(divName);
+  }
+
+  addPriceList() {}
 }
