@@ -10,6 +10,7 @@ coldBrew.description =
 coldBrew.addToPrice({ volume: '3dl', cost: 20 });
 const frenchPress = new Item('French press');
 frenchPress.addToPrice({ volume: '3dl', cost: 20 });
+frenchPress.addToPrice({ volume: '5dl', cost: 30 });
 frenchPress.picture = 'images/frenchp.jpg';
 export const coffee = new Module();
 coffee.addToList(frenchPress);

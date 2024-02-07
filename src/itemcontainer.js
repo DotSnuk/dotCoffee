@@ -67,11 +67,30 @@ export default class ItemContainer extends DivModifier {
         newDiv.innerText = item.name;
       },
       middle: () => {
-        console.log(divName);
+        return;
       },
-      bottom: () => {},
+      bottom: () => {
+        newDiv.appendChild(this.addPriceList(item));
+      },
     }[divName]();
     return newDiv;
   }
-  addPriceList() {}
+  addPriceList(item) {
+    // this will need to be a grid later, with shopping cart to the right
+    const selectElmnt = document.createElement('select');
+    selectElmnt.name = 'select';
+    selectElmnt.id = 'select';
+    item.prices.forEach(price => {
+      for (const [key, value] of Object.entries(price)) {
+        const optionElmnt = document.createElement('option');
+        optionElmnt.innerText = `Prices ${key} ${value}`;
+        optionElmnt.dataset[key] = key;
+        optionElmnt.dataset[value] = value;
+        selectElmnt.appendChild(optionElmnt);
+        console.log(key, value);
+      }
+    });
+    return selectElmnt;
+    console.log(item.prices);
+  }
 }
