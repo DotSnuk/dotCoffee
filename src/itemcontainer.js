@@ -63,7 +63,7 @@ export default class ItemContainer extends DivModifier {
   itemDivParser(divName, item) {
     const newDiv = document.createElement('div');
     const divParser = {
-      name: function () {
+      name: () => {
         newDiv.innerText = item.name;
       },
       middle: () => {
