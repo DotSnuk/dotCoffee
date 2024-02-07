@@ -51,10 +51,8 @@ export default class ItemContainer extends DivModifier {
     div.style.backgroundImage = "url('" + item.picture + "')";
     const elements = ['name', 'middle', 'bottom'];
     elements.forEach(elemnt => {
-      const newDiv = document.createElement('div');
-      this.itemDivParser(elemnt);
-      // switch statement?
-      div.appendChild(newDiv);
+      div.appendChild(this.itemDivParser(elemnt, item));
+      // perhaps appendChild(itemDivParser(elemnt, item)) ?? and have itemDivParser return the div
     });
     // div and item parameter
     // set background
@@ -62,13 +60,19 @@ export default class ItemContainer extends DivModifier {
     // create list of prices
     // order button
   }
-  itemDivParser(divName) {
+  itemDivParser(divName, item) {
+    const newDiv = document.createElement('div');
     const divParser = {
-      name: () => item.name,
-      bottom: () => this.addPriceList(),
+      name: function () {
+        newDiv.innerText = item.name;
+      },
+      middle: () => {
+        console.log(divName);
+      },
+      bottom: () => {},
     };
-    divParser(divName);
+    divParser[divName]();
+    return newDiv;
   }
-
   addPriceList() {}
 }
