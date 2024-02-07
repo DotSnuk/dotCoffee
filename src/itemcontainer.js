@@ -80,17 +80,26 @@ export default class ItemContainer extends DivModifier {
     const selectElmnt = document.createElement('select');
     selectElmnt.name = 'select';
     selectElmnt.id = 'select';
-    item.prices.forEach(price => {
-      for (const [key, value] of Object.entries(price)) {
-        const optionElmnt = document.createElement('option');
-        optionElmnt.innerText = `Prices ${key} ${value}`;
-        optionElmnt.dataset[key] = key;
-        optionElmnt.dataset[value] = value;
-        selectElmnt.appendChild(optionElmnt);
-        console.log(key, value);
+    item.prices.forEach(pricePerItem => {
+      // pricePerVolume?
+      const optionElmnt = document.createElement('option');
+      let priceString = '';
+      for (const [key, value] of Object.entries(pricePerItem)) {
+        const priceParser = {
+          volumeInDl: () => {
+            priceString += `${value} dl: `;
+            optionElmnt.dataset.volume = value;
+          },
+          cost: () => {
+            priceString += `${value}kr`;
+            optionElmnt.dataset.cost = value;
+          },
+        }[key]();
       }
+      optionElmnt.innerText = priceString;
+      selectElmnt.appendChild(optionElmnt);
     });
+
     return selectElmnt;
-    console.log(item.prices);
   }
 }
