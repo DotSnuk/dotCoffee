@@ -70,8 +70,7 @@ export default class ItemContainer extends DivModifier {
         console.log(divName);
       },
       bottom: () => {},
-    };
-    divParser[divName]();
+    }[divName]();
     return newDiv;
   }
   addPriceList() {}
