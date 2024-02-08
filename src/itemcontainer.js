@@ -65,11 +65,13 @@ export default class ItemContainer extends DivModifier {
     const divParser = {
       name: () => {
         newDiv.innerText = item.name;
+        newDiv.id = 'itemName';
       },
       middle: () => {
         return;
       },
       bottom: () => {
+        newDiv.id = 'prices';
         newDiv.appendChild(this.addPriceList(item));
       },
     }[divName]();
@@ -80,11 +82,11 @@ export default class ItemContainer extends DivModifier {
     const selectElmnt = document.createElement('select');
     selectElmnt.name = 'select';
     selectElmnt.id = 'select';
-    item.prices.forEach(pricePerItem => {
+    item.prices.forEach(pricePerVolume => {
       // pricePerVolume?
       const optionElmnt = document.createElement('option');
       let priceString = '';
-      for (const [key, value] of Object.entries(pricePerItem)) {
+      for (const [key, value] of Object.entries(pricePerVolume)) {
         const priceParser = {
           volumeInDl: () => {
             priceString += `${value} dl: `;

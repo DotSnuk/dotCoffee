@@ -53,7 +53,6 @@ class MainPage extends DivModifier {
       const div = document.createElement('div');
       li.appendChild(div);
       div.classList.add('menuitem');
-      // if item.active == true add active (or something)
       div.innerText = item.name;
     });
   }
