@@ -52,7 +52,6 @@ export default class ItemContainer extends DivModifier {
     const elements = ['name', 'middle', 'bottom'];
     elements.forEach(elemnt => {
       div.appendChild(this.itemDivParser(elemnt, item));
-      // perhaps appendChild(itemDivParser(elemnt, item)) ?? and have itemDivParser return the div
     });
     // div and item parameter
     // set background
@@ -83,7 +82,6 @@ export default class ItemContainer extends DivModifier {
     selectElmnt.name = 'select';
     selectElmnt.id = 'select';
     item.prices.forEach(pricePerVolume => {
-      // pricePerVolume?
       const optionElmnt = document.createElement('option');
       let priceString = '';
       for (const [key, value] of Object.entries(pricePerVolume)) {
@@ -95,9 +93,11 @@ export default class ItemContainer extends DivModifier {
           cost: () => {
             priceString += `${value}kr`;
             optionElmnt.dataset.cost = value;
+            // have a default like switch?
           },
         }[key]();
       }
+      // do something with dataset
       optionElmnt.innerText = priceString;
       selectElmnt.appendChild(optionElmnt);
     });

@@ -43,12 +43,19 @@ body {
   grid-template-rows: 30px auto 50px;
   overflow: hidden;
 }
+#prices {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  padding: 15px;
+  background-color: rgba(46, 42, 36, 0.7);
+}
 .header {
   font-size: 24px;
 }
 #itemName {
   background-color: rgba(46, 42, 36, 0.7);
   color: #fefcff;
+  text-shadow: 0px 0px 2px black;
 }
 #filter,
 #itemContainer {
@@ -88,4 +95,7 @@ body {
   padding: 10px;
   box-sizing: border-box;
   /* overflow-y: auto; */
+}
+#footer {
+  position: sticky;
 }
