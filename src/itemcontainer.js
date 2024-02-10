@@ -31,14 +31,10 @@ export default class ItemContainer extends DivModifier {
       console.log(string);
     });
   }
-  divToContainer() {
-    const containerDiv = document.getElementById('container');
-    const elements = ['filter', 'itemContainer'];
-    elements.forEach(elmnt => super.divToParent(containerDiv, elmnt));
-  }
+
   populateItems() {
     this.itemList.forEach(item => {
-      const div = super.divToParent(document.getElementById('itemContainer'));
+      const div = super.divToParent(document.getElementById('container'));
       div.classList.add('item');
       this.renderItem(div, item);
       // div.style.backgroundImage = "url('" + item.picture + "')";
