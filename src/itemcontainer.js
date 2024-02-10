@@ -20,41 +20,23 @@ export default class ItemContainer extends DivModifier {
   addToList(item) {
     this._itemList.push(item);
   }
-  expandItem(div, item) {
-    div.innerText = `${item.name} ${item.description}, ${item.prices}`;
-    item.prices.forEach(price => {
-      const priceEntry = Object.entries(price);
-      let string = '';
-      for (const [key, val] of priceEntry) {
-        string += `${key} ${val},`;
-      }
-      console.log(string);
-    });
-  }
 
   populateItems() {
     this.itemList.forEach(item => {
       const div = super.divToParent(document.getElementById('container'));
       div.classList.add('item');
       this.renderItem(div, item);
-      // div.style.backgroundImage = "url('" + item.picture + "')";
-      // div.addEventListener('click', () => {
-      //   this.expandItem(div, item);
-      // });
     });
   }
+
   renderItem(div, item) {
     div.style.backgroundImage = "url('" + item.picture + "')";
     const elements = ['name', 'middle', 'bottom'];
     elements.forEach(elemnt => {
       div.appendChild(this.itemDivParser(elemnt, item));
     });
-    // div and item parameter
-    // set background
-    // set name
-    // create list of prices
-    // order button
   }
+
   itemDivParser(divName, item) {
     const newDiv = document.createElement('div');
     const divParser = {
@@ -72,8 +54,8 @@ export default class ItemContainer extends DivModifier {
     }[divName]();
     return newDiv;
   }
+
   addPriceList(item) {
-    // this will need to be a grid later, with shopping cart to the right
     const selectElmnt = document.createElement('select');
     selectElmnt.name = 'select';
     selectElmnt.id = 'select';
