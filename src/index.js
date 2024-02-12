@@ -2,15 +2,16 @@ import './style.css';
 import DivModifier from './divmodifier.js';
 import MenubarItem from './menubarItem.js';
 import { coffee } from './coffee.js';
+import { tea } from './tea.js';
 
 class MainPage extends DivModifier {
   constructor() {
     super();
     this.title = 'dotCoffee';
     this.content = 'content';
-    this.menuList = [];
+    this.menuList = ['coffee', 'tea'];
     this.render();
-    this.activeContainer(coffee);
+    this.activeContainer(tea);
     // this.loadModule(coffee);
   }
   render() {
@@ -50,30 +51,42 @@ class MainPage extends DivModifier {
     this.menuList.forEach(item => {
       const li = document.createElement('li');
       ul.appendChild(li);
-      const div = document.createElement('div');
-      li.appendChild(div);
-      div.classList.add('menuitem');
-      div.innerText = item.name;
+      // const div = document.createElement('div');
+      const a = document.createElement('a');
+      li.appendChild(a);
+      a.classList.add('menuitem');
+      a.innerText = item;
+      a.href = '#';
+      a.addEventListener('click', () => {
+        this.activeContainer(item);
+      });
+      // a.onclick = function () {
+      //   console.log(item);
+      // };
+      // li.appendChild(div);
+      // div.classList.add('menuitem');
+      // div.innerText = item;
     });
   }
+
   activeContainer(containr) {
+    this.removeChildren();
     containr.populateItems();
   }
-  loadModule(mod) {
-    const containerId = document.getElementById('container');
-    mod.itemList.forEach(item => {
-      const div = super.divToParent(containerId);
-      div.innerText = item.name;
+  removeChildren() {
+    const container = document.getElementById('container');
+    const items = document.querySelectorAll('.item');
+    items.forEach(item => {
+      container.removeChild(item);
     });
   }
 }
 
 const SITE = new MainPage();
-const coffeeLink = new MenubarItem('coffee', 'coffee.js');
-const teaLink = new MenubarItem('tea', 'tea.js');
-const dessertLink = new MenubarItem('dessert', 'dessert.js');
+// const coffeeLink = new MenubarItem('coffee', 'coffee.js');
+// const teaLink = new MenubarItem('tea', 'tea.js');
 
-SITE.addToMenuList(coffeeLink);
-SITE.addToMenuList(teaLink);
-SITE.addToMenuList(dessertLink);
+// SITE.addToMenuList(coffeeLink);
+// SITE.addToMenuList(teaLink);
+
 SITE.populateMenuBar();
